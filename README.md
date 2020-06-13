@@ -1,4 +1,4 @@
-Backend for MERN stack todo app.
+Backend for MERN stack todo app (localhost).
 
 client: https://github.com/clairefro/mern-todo-app
 
