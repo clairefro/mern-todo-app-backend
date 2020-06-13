@@ -33,6 +33,7 @@ todoRoutes.route('/').get(function(req, res) {
 });
 
 todoRoutes.route('/add').post(function(req, res) {
+  console.log(req)
   let todo = new Todo(req.body);
   todo.save()
       .then(todo => {
@@ -66,6 +67,16 @@ todoRoutes.route('/update/:id').post(function(req, res) {
       .catch(err => {
           res.status(400).send("Update not possible");
       })
+  });
+});
+
+todoRoutes.route('/delete/:id').post(function(req, res) {
+  Todo.findByIdAndDelete(req.params.id, function(err, todo) {
+    if (!todo)
+      res.status(404).send("data is not found");
+    else
+      res.status(200).send("delete success!");
+      console.log('delete success!')
   });
 });
 
